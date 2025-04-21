@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onlineTracksFragment">
+    <fragment
+        android:id="@+id/onlineTracksFragment"
+        android:name="com.example.avito_internship_music_app.ui.search.OnlineTracksFragment"
+        android:label="Online Tracks">
+        <action
+            android:id="@+id/action_onlineTracksFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.example.avito_internship_music_app.ui.player.PlayerFragment"
+        android:label="PlayerFragment">
+
+        <argument
+            android:name="trackId"
+            app:argType="long" />
+    </fragment>
+
+
+</navigation>

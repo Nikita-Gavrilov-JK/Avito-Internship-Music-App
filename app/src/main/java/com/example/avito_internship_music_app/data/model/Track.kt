@@ -1,4 +1,5 @@
 package com.example.avito_internship_music_app.data.model
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 @Serializable
 data class Track(
@@ -13,5 +14,7 @@ data class Track(
 data class Artist(val name: String)
 
 @Serializable
-data class Album(val cover: String)
+data class Album(
+    val cover_medium : String
+)
 

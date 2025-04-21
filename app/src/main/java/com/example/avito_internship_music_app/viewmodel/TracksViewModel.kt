@@ -1,5 +1,6 @@
 package com.example.avito_internship_music_app.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.avito_internship_music_app.data.model.Track
@@ -20,15 +21,24 @@ class TracksViewModel : ViewModel(){
 
     fun loadChart() {
         viewModelScope.launch {
-            runCatching { storage.getChartTracks().tracks }
-                .onSuccess { _tracks.value = it }
+            try {
+                val chartResponse = storage.getChartTracks()
+                Log.d("TracksViewModel", "Загружено ${chartResponse.tracks.data.size} треков")
+                _tracks.value = chartResponse.tracks.data
+            } catch (e: Exception) {
+                Log.e("TracksViewModel", "Ошибка загрузки чартов: ${e.message}")
+            }
         }
     }
 
     fun search(query: String) {
         viewModelScope.launch {
-            runCatching { storage.searchTracks(query).tracks }
-                .onSuccess { _tracks.value = it }
+            try {
+                val searchResponse = storage.searchTracks(query)
+                _tracks.value = searchResponse.data
+            } catch (e: Exception) {
+                Log.e("TracksViewModel", "Ошибка поиска: ${e.message}")
+            }
         }
     }
 }

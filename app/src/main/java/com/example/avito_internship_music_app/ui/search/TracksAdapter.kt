@@ -33,7 +33,7 @@ class TracksAdapter( private val onClick: (Track) -> Unit
             title.text = track.title
             artist.text = track.artist.name
             Glide.with(image)
-                .load(track.album.cover)
+                .load(track.album.cover_medium)
                 .placeholder(R.drawable.ic_music_placeholder)
                 .into(image)
 
