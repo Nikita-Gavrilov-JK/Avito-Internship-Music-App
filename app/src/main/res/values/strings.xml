@@ -2,4 +2,8 @@
     <string name="app_name">Avito_Internship_Music_App</string>
 
     <string name="track_cover">Обложка трека</string>
+    <string name="previous">Предыдущий трек</string>
+    <string name="next">Следующий трек</string>
+    <string name="play_pause">Пауза</string>
+
 </resources>

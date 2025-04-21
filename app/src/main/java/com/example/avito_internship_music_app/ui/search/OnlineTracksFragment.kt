@@ -6,6 +6,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.avito_internship_music_app.R
@@ -21,9 +22,11 @@ class OnlineTracksFragment : Fragment(R.layout.fragment_online_tracks) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        _binding = FragmentOnlineTracksBinding.bind(view)
         adapter = TracksAdapter { track ->
-
+            val action = OnlineTracksFragmentDirections
+                .actionOnlineTracksFragmentToPlayerFragment(track.id)
+            findNavController().navigate(action)
         }
 
         binding.tracksRecyclerView.layoutManager = LinearLayoutManager(requireContext())
